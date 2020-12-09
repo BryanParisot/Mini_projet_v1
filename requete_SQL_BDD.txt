@@ -18,8 +18,7 @@ CREATE TABLE `posts` (
   `id_utilisateurs` INT(20),
   `titre` varchar(20) NOT NULL,
   `message` text NOT NULL,
-  `date/heure_creation` DATETIME(15) NOT NULL,
-   FOREIGN KEY(categories) REFERENCES categories(id)
+  `date/heure_creation` DATETIME(15) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
@@ -27,8 +26,7 @@ CREATE TABLE `posts` (
 CREATE TABLE `categories` (
   `id` INT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `id_users` INT(20),
-  `langage` varchar(20) NOT NULL,
-   FOREIGN KEY(users) REFERENCES users(id)
+  `categories` CHANGE `langage` `langage` INT(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
@@ -38,10 +36,7 @@ CREATE TABLE `reponses` (
   `id_utilisateurs` INT(20),
   `id_categorie` INT(20),
   `id_post` INT(20),
-  `message` text NOT NULL,
-   FOREIGN KEY(users) REFERENCES users(id),
-   FOREIGN KEY(categories) REFERENCES categories(id),
-   FOREIGN KEY(posts) REFERENCES posts(id)
+  `message` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
