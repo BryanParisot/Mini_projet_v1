@@ -8,7 +8,7 @@ class User{
     private $email;
     private $mdp;
     private $role;
-    private $etoiles;
+    private $etoile;
     private $avatar;
 
     /* ----------------------------------------------
