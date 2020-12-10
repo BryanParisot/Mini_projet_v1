@@ -11,6 +11,21 @@ class User{
     private $etoile;
     private $avatar;
 
+// public function dataUser(){
+
+//     return = array(
+//         'id' => '1',
+//         'pseudo' => 'bryanP',
+//         'nom' => 'parisot',
+//         'prenom'=> 'bryan',
+//         'email' => 'bryan@bryan'
+//         'mdp'=> 'mdp54'
+//         'role' => '1',
+//         'etoile' => '',
+//         'avatar' = '',
+//     );
+// }
+
     /* ----------------------------------------------
                             Setters
     -------------------------------------------------*/
