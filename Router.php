@@ -71,7 +71,6 @@ class Router
                 case 'writePost':
                     $this->writePostController->index();
                     break;
-
                 default:
                     $this->errorController->index();
                     break;

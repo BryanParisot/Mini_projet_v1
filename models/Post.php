@@ -1,5 +1,5 @@
 <?php
-class Post{
+class Post extends Model{
 
     private $id;
     private $id_utilisateur;
