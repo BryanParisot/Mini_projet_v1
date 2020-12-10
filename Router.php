@@ -7,8 +7,7 @@ require("controllers/HomeController.php");
 require("controllers/LoginController.php");
 require("controllers/LogoutController.php");
 require("controllers/PostController.php");
-require("controllers/ProfilController.php");
-require("controllers/RegisterController.php");
+require("controllers/writePostController.php");
 
 class Rooter
 {
@@ -22,7 +21,7 @@ class Rooter
     private $postController;
     private $profilController;
     private $registerController;
-
+    private $writePostController;
 
     function __construct()
     {
@@ -34,7 +33,8 @@ class Rooter
         $this->logoutController            = new LogoutController();
         $this->postController              = new PostController();
         $this->profilController            = new ProfilController();
-        $this->RegisterController          = new RegisterController();
+        $this->registerController          = new RegisterController();
+        $this->writePostController         = new WritePostController();
     }
     // on génére les vues, grace au controller, ici on vérifie si action est bien dans l'url. si il n'y est pas on renvoie sur la page home
     public function routerRequest()
@@ -62,6 +62,10 @@ class Rooter
                 case 'login':
                     $this->loginController->index();
                     break;
+                case 'writePost':
+                    $this->writePostController->index();
+                    break;
+
                 default:
                     $this->errorController->index();
                     break;
