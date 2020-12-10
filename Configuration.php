@@ -1,6 +1,7 @@
 <?php
 
-class Configuration {
+class Configuration
+{
 
     // BDD
     public static $host = "localhost";
@@ -8,5 +9,9 @@ class Configuration {
     public static $username = "root";
     public static $password = "";
 
+    // ADMIN
+    public static $IS_ADMIN = 1;
 
+    //MODERATEUR
+    public static $IS_MODERATEUR = 2;
 }

@@ -21,6 +21,11 @@ function isAdmin($userData)
     return ($userData["role"] === Configuration::$IS_ADMIN);
 }
 
+function isModerateur($userData)
+{
+    return ($userData["role"] === Configuration::$IS_MODERATEUR);
+}
+
 function isSessionActive($userData)
 {
     return (sizeof($userData) > 0);
