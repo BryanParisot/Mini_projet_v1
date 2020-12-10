@@ -1,6 +1,6 @@
 <?php
 
-class Category{
+class Category extends Model{
     private $id;
     private $id_users;
     private $langage;

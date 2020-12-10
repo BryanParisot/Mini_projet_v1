@@ -1,6 +1,6 @@
 <?php 
 
-class Answer{
+class Answer extends Model{
     private $id;
     private $id_utilisateur;
     private $id_categorie;
