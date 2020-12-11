@@ -12,6 +12,7 @@ require("controllers/RegisterController.php");
 require("controllers/WritePostController.php");
 
 
+
 class Router
 {
 

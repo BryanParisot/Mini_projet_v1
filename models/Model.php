@@ -1,7 +1,7 @@
 <?php
 
 require_once("BDD.php");
-
+require_once("User.php");
 abstract class Model extends BDD
 {
 
