@@ -34,7 +34,7 @@ class User extends Model
         }
     }
 
-        /**
+    /**
      * On vérifie si l'utilisateur associé à l'adresse email de l'instance existe dans la BDD
      */
     public function existInBDD()
@@ -157,7 +157,7 @@ class User extends Model
         return $this->avatar;
     }
 
-        /**
+    /**
      * Renvoie tous les champs privés sous forme de tableau sauf l'id
      */
     public function getDataArray()
