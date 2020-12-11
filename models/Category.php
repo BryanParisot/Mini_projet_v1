@@ -11,7 +11,7 @@ class Category extends Model
 
     public function refresh()
     {
-        parent::refreshModel(array("id_usersr" => $this->id_usersr, "langae" => $this->langage));
+        parent::refreshModel(array("id_users" => $this->id_users, "langage" => $this->langage));
     }
 
 
@@ -92,5 +92,5 @@ class Category extends Model
             echo "<p>/!\ Je n'ai pas pu récupérer la catégorie </p>";
             return array();
         }
-
+    }
 }

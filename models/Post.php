@@ -1,5 +1,6 @@
 <?php
-class Post extends Model{
+class Post extends Model
+{
 
     private $id;
     private $id_utilisateur;
@@ -12,14 +13,14 @@ class Post extends Model{
     /* ----------------------------------------------
         Utils : Méthodes utiles
     -------------------------------------------------*/
-    
+
     public function refresh()
     {
-        parent::refreshModel(array("id_utilisateur" => $this->id_utilisateur,"titre"=> $this->titre,"message"=>$this->message,"date_heure_creation"=>$this->date_heure_creation));
+        parent::refreshModel(array("id_utilisateur" => $this->id_utilisateur, "titre" => $this->titre, "message" => $this->message, "date_heure_creation" => $this->date_heure_creation));
     }
 
 
-        /* ----------------------------------------------
+    /* ----------------------------------------------
                             Setters
     -------------------------------------------------*/
 
@@ -48,7 +49,7 @@ class Post extends Model{
         $this->date_heure_creation = $date_heure_creation;
     }
 
-            /* ----------------------------------------------
+    /* ----------------------------------------------
                                 Getters
     -------------------------------------------------*/
 
@@ -119,7 +120,4 @@ class Post extends Model{
             return array();
         }
     }
-
-
-
 }
