@@ -7,9 +7,12 @@ require("controllers/HomeController.php");
 require("controllers/LoginController.php");
 require("controllers/LogoutController.php");
 require("controllers/PostController.php");
+require("controllers/ProfilController.php");
+require("controllers/RegisterController.php");
 require("controllers/writePostController.php");
 
-class Rooter
+
+class Router
 {
 
     private $answerController;
@@ -41,11 +44,20 @@ class Rooter
     {
         if (isset($_GET['action'])) {
             switch ($_GET['action']) {
+                case 'answer':
+                    $this->answerController->index();
+                    break;
                 case 'contact':
                     $this->contactController->index();
                     break;
                 case 'home':
                     $this->homeController->index();
+                    break;
+                case 'login':
+                    $this->loginController->index();
+                    break;
+                case 'logout':
+                    $this->logoutController->index();
                     break;
                 case 'post':
                     $this->postController->index();
@@ -55,12 +67,6 @@ class Rooter
                     break;
                 case 'register':
                     $this->registerController->index();
-                    break;
-                case 'answer':
-                    $this->answerController->index();
-                    break;
-                case 'login':
-                    $this->loginController->index();
                     break;
                 case 'writePost':
                     $this->writePostController->index();
