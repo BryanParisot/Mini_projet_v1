@@ -1,1 +1,1 @@
-<h1>Page home</h1>
+<h1>Page profil</h1>

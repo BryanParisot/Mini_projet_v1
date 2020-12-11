@@ -82,7 +82,7 @@ class User extends Model
         $this->prenom = $prenom;
     }
 
-    public function setemail($email)
+    public function setEmail($email)
     {
         $this->email = $email;
     }
@@ -208,6 +208,4 @@ class User extends Model
             return array();
         }
     }
-}
-
 }
