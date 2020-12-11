@@ -9,7 +9,7 @@ require("controllers/LogoutController.php");
 require("controllers/PostController.php");
 require("controllers/ProfilController.php");
 require("controllers/RegisterController.php");
-require("controllers/writePostController.php");
+require("controllers/WritePostController.php");
 
 
 class Router
