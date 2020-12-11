@@ -4,19 +4,19 @@
 
 <!----------------------- NOM ---------------------------->
         <label for="exampleDropdownFormNom">Nom</label>
-        <input type="nom" class="form-control" id="exampleDropdownFormName" placeholder="Nom de famille">
+        <input type="text" class="form-control" id="exampleDropdownFormName" placeholder="Nom de famille">
     </div>
 
 <!--------------------- PRENOM --------------------------->
     <div class="form-group">
         <label for="exampleDropdownFormPrenom">Prénom</label>
-        <input type="prenom" class="form-control" id="exampleDropdownFormPrenom" placeholder="Prénom">
+        <input type="text" class="form-control" id="exampleDropdownFormPrenom" placeholder="Prénom">
     </div>
 
 <!--------------------- PSEUDO --------------------------->
     <div class="form-group">
         <label for="exampleDropdownFormPseudo">Pseudo</label>
-        <input type="pseudo" class="form-control" id="exampleDropdownFormPseudo" placeholder="Pseudo">
+        <input type="text" class="form-control" id="exampleDropdownFormPseudo" placeholder="Pseudo">
     </div>
 
 <!----------------------- MAIL --------------------------->
@@ -28,13 +28,13 @@
 <!------------------------ MDP --------------------------->
     <div class="form-group">
         <label for="exampleDropdownFormPassword">Mot de passe</label>
-        <input type="mdp" class="form-control" id="exampleDropdownFormPassword" placeholder="Password">
+        <input type="password" class="form-control" id="exampleDropdownFormPassword" placeholder="Password">
     </div>
 
 <!----------------- CONFIRMATION MDP --------------------->
 <div class="form-group">
         <label for="exampleDropdownFormConfirm_Password">Confirmation mot de passe</label>
-        <input type="Confirm_mdp" class="form-control" id="exampleDropdownFormPassword" placeholder="Confirmation mot passe">
+        <input type="password" class="form-control" id="exampleDropdownFormPassword" placeholder="Confirmation mot passe">
     </div>
 
 <!----------------- AJOUTER FICHIER ---------------------->
