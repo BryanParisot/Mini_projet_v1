@@ -106,7 +106,7 @@ class Post extends Model{
         }
     }
 
-    public static function getAllProduits()
+    public static function getAllPost()
     {
         // Appelle “findBy” de “Model”
         $data = self::_findAllBy(self::$tableName, array());

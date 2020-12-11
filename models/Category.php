@@ -1,12 +1,22 @@
 <?php
 
-class Category extends Model{
+class Category extends Model
+{
     private $id;
     private $id_users;
     private $langage;
 
+    public $tableName = "categories";
 
-            /* ----------------------------------------------
+
+    public function refresh()
+    {
+        parent::refreshModel(array("id_usersr" => $this->id_usersr, "langae" => $this->langage));
+    }
+
+
+
+    /* ----------------------------------------------
                             Setters
     -------------------------------------------------*/
 
@@ -25,7 +35,7 @@ class Category extends Model{
         $this->langage = intval($langage);
     }
 
-                /* ----------------------------------------------
+    /* ----------------------------------------------
                                 Getters
     -------------------------------------------------*/
 
@@ -43,5 +53,44 @@ class Category extends Model{
     {
         return intval($this->langage);
     }
+    public function getDataArray()
+    {
+        return array(
+            "id_users" => $this->getId_users(),
+            "langage" => $this->getLangage()
+        );
+    }
+
+
+    /**
+     * Met à jour les setters associés aux clés de data
+     * @param Integer $id - Id de l'utilisateur dans la base de données
+     */
+    public static function getCategoryById($id)
+    {
+        // Appelle “findBy” de “Model”
+        $data = self::_findOneBy(self::$tableName, array("id" => $id));
+
+        if ($data) {
+            // On crée un utilisateur à partir des données
+            $commande = new Category($data);
+            return $commande;
+        } else {
+            echo "<p>/!\ Je n'ai pas pu récupérer la catégorie avec l'id : {$id}</p>";
+            return null;
+        }
+    }
+    public static function getAllCategory()
+    {
+        // Appelle “findBy” de “Model”
+        $data = self::_findAllBy(self::$tableName, array());
+
+        if ($data) {
+            // On renvoie tous les utilisateurs trouvés
+            return $data;
+        } else {
+            echo "<p>/!\ Je n'ai pas pu récupérer la catégorie </p>";
+            return array();
+        }
 
 }
