@@ -1,66 +1,11 @@
 <?php
 
-abstract class Model
+require_once("BDD.php");
+
+abstract class Model extends BDD
 {
-    private $host = "localhost";
-    private $nameBDD = "tp8-mvc";
-    private $username = "root";
-    private $password = "";
 
-    // Instance PDO de la BDD
-    protected $bdd;
-
-    /**
-     * Connecte à la BDD et renvoie l'instance une fois créée
-     */
-    private function _connectToBDD()
-    {
-        $bdd = new PDO("mysql:host={$this->host};dbname={$this->nameBDD};charset=utf8", $this->username, $this->password);
-        return $bdd;
-    }
-
-    /**
-     * Renvoie l'instance une fois créée et la créer si elle ne l'était pas déjà
-     */
-    protected function getBDD()
-    {
-        if (!isset($this->bdd)) {
-            $this->bdd = $this->_connectToBDD();
-        }
-        return $this->bdd;
-    }
-
-    /**
-     * @param String $sql - Requête SQL
-     * @param Array $data - Tableau de paramètres, peu être nul
-     */
-    protected function executeRequest($sql, $data = null)
-    {
-        // On récupére la BDD ou l'on s'y connecte si $this->bdd était nul
-        $bdd = $this->getBDD();
-
-        // Si $data n'est pas défini ou est de taille vide
-        if (!isset($data) || (sizeof($data) === 0)) {
-            // On exécute la requête SQL sans avoir besoin de $data
-            $result = $bdd->query($sql);
-        } else {
-            // On exécute la requête SQL en utilisant $data
-
-            // $sql = "SELECT ? FROM ?";
-            // $data = array("id", "utilisateurs");
-            //--> "SELECT id FROM utilisateurs";
-
-            // $sql = "SELECT :column FROM :nomTable";
-            // $data = array(":column" => "id", ":nomTable" => "utilisateurs");
-            //--> "SELECT id FROM utilisateurs";
-
-            $request = $bdd->prepare($sql);
-            $result = $request->execute($data);
-        }
-
-        // On récupére les résultats 
-        return $result;
-    }
+    public static $tableName;
 
     /**
      * Met à jour les champs privés à partir des clés contenues dans le tableau data
@@ -69,6 +14,10 @@ abstract class Model
      */
     public function hydrate($data)
     {
+        if (sizeof($data) === 0) {
+            return;
+        }
+
         // On traite chaque clé du tableau $data
         foreach ($data as $setterName => $value) {
             // On récupère le nom des différents setters dans $data
@@ -120,8 +69,8 @@ abstract class Model
         $sql = "INSERT INTO `{$tableName}` (`{$textColonnes}`) VALUES ('{$textValeurs}')";
         // echo "<p>$sql</p>";
 
-        $this->executeRequest($sql, null);
-        // "INSERT INTO nomDeLaTable (colonne1, colonne2, ...) VALUES (valeur_colonne1, valeur_colonne2, ...)"
+        $this->executeRequest($sql);
+        // "INSERT INTO nomDeLaTable (colonne1, colonne2, ...) VALUES ('valeur_colonne1', 'valeur_colonne2', ...)"
     }
 
     /**
@@ -129,32 +78,18 @@ abstract class Model
      * @param String $tableName - Nom de la table à manipuler
      * @param Array $data - Tableau contenant les données à utiliser comme condition
      */
-    protected function findBy($tableName, $data)
+    protected static function findBy($tableName, $data)
     {
-
         // On crée notre requête SQL
         $sql = "SELECT * FROM `{$tableName}`";
 
         if (sizeof($data) > 0) {
-            // Liste des conditions
-            $conditions = [];
-
-            foreach ($data as $key => $value) {
-                // On ajoute une condition au tableau
-                // $key est la colonne et $value la valeur qui la conditionne
-                $conditions[] = "`{$key}` = '{$value}'";
-            }
-
-            // On ajoute le séparateur " AND " entre chaque condition du tableau
-            $textConditions = implode(" AND ", $conditions);
-
-            $sql .= " WHERE {$textConditions}";
+            $sql .= self::_createConditionString($data);
         }
-
         // echo "<p>$sql</p>";
 
         // On exécute notre requête SQL puis on renvoie son résultat
-        return $this->executeRequest($sql, null);
+        return parent::executeRequest($sql);
     }
 
     /**
@@ -165,7 +100,6 @@ abstract class Model
      */
     protected function update($tableName, $data, $dataConditions)
     {
-
         // Liste des colonnes à modifier
         $colonnesToEdit = [];
 
@@ -179,27 +113,13 @@ abstract class Model
 
         //------------------------------------------------------------
 
-        // Liste des conditions
-        $conditions = [];
-
-        foreach ($dataConditions as $key => $value) {
-            // On ajoute une condition au tableau
-            // $key est la colonne et $value la valeur qui la conditionne
-            $conditions[] = "`{$key}` = '{$value}'";
-        }
-        //var_dump($conditions);
-
-        // On ajoute le séparateur " AND " entre chaque condition du tableau
-        $textConditions = implode(" AND ", $conditions);
-
-        //------------------------------------------------------------
-
         // On crée notre requête SQL
-        $sql = "UPDATE `{$tableName}` SET {$textColonneToEdit} WHERE {$textConditions}";
+        $sql = "UPDATE `{$tableName}` SET {$textColonneToEdit}";
+        $sql .= $this->_createConditionString($dataConditions);
         // echo "<p>$sql</p>";
 
         // On exécute notre requête SQL
-        $this->executeRequest($sql, null);
+        $this->executeRequest($sql);
     }
 
     /**
@@ -209,6 +129,21 @@ abstract class Model
      */
     protected function delete($tableName, $data)
     {
+        // On crée notre requête SQL
+        $sql = "DELETE FROM `{$tableName}`";
+        $sql .= $this->_createConditionString($data);
+        // echo "<p>$sql</p>";
+
+        // On exécute notre requête SQL puis on renvoie son résultat
+        $this->executeRequest($sql);
+    }
+
+    /**
+     * Créer la partie conditionnelle du sql
+     * @param Array $data - Tableau contenant les données à utiliser comme condition
+     */
+    private static function _createConditionString($data)
+    {
         // Liste des conditions
         $conditions = [];
 
@@ -217,16 +152,87 @@ abstract class Model
             // $key est la colonne et $value la valeur qui la conditionne
             $conditions[] = "`{$key}` = '{$value}'";
         }
-        //var_dump($conditions);
 
         // On ajoute le séparateur " AND " entre chaque condition du tableau
-        $textConditions = implode(" AND ", $conditions);
-
-        // On crée notre requête SQL
-        $sql = "DELETE FROM `{$tableName}` WHERE {$textConditions}";
-        // echo "<p>$sql</p>";
-
-        // On exécute notre requête SQL puis on renvoie son résultat
-        $this->executeRequest($sql, null);
+        $whereString = " WHERE ";
+        $whereString .= implode(" AND ", $conditions);
+        return $whereString;
     }
+
+    /**
+     * Trouve tous les résultats à partir d'un ensemble de conditions
+     * @param Array $data - Conditions to give in the SQL Request
+     * @param int $nb - Conditions to give in the SQL Request
+     */
+    private static function _findBy($tableName, $data)
+    {
+        $resultPDO = self::findBy($tableName, $data);
+        return $resultPDO;
+    }
+
+    protected static function _findOneBy($tableName, $data)
+    {
+        $resultPDO = self::_findBy($tableName, $data);
+        return $resultPDO->fetch(PDO::FETCH_ASSOC);
+    }
+
+    protected static function _findAllBy($tableName, $data)
+    {
+        $resultPDO = self::_findBy($tableName, $data);
+        return $resultPDO->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function refreshModel($tableName, $data = array())
+    {
+        if (sizeof($data) > 0) {
+            // Appelle “findBy” de “Model”
+            $dataToHydrate = self::_findOneBy($tableName, $data);
+            // $resultPDO vaut false si la requête n'a pas récupéré de ligne
+            if ($dataToHydrate) {
+                $this->hydrate($dataToHydrate);
+            } else {
+                echo "/!\ Refresh impossible";
+            }
+        }
+    }
+
+    /**
+     * On ajoute les données de l'instance dans la table associé de la BDD
+     */
+    public function pushToBDD()
+    {
+        $data = $this->getDataArray();
+        $this->create($this::$tableName, $data);
+
+        // On récupére l'ID qui vient d'être généré pour cette donnée.
+        $this->refreshModel($this::$tableName, $data);
+    }
+
+    /**
+     * On met à jour les données de l'instance dans la table associé de la BDD
+     */
+    public function updateInBDD()
+    {
+        $data = $this->getDataArray();
+        $dataCondition = array(
+            "id" => $this->getId(),
+        );
+        $this->update($this::$tableName, $data, $dataCondition);
+    }
+
+    /**
+     * on supprime les données de l'instance dans la table associé de la BDD
+     */
+    public function deleteFromBDD()
+    {
+        $dataCondition = array(
+            "id" => $this->getId(),
+        );
+        $this->delete($this::$tableName, $dataCondition);
+    }
+
+    // On oblige tous les enfants à avoir cette méthode
+    abstract public function getDataArray();
+
+    abstract public function getId();
 }
