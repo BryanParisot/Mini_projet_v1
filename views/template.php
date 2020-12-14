@@ -14,9 +14,9 @@
     <meta name="language" content="fr-FR" />
     <meta name="robots" content="all" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-<!-- Fichiers CSS -->
+    <!-- Fichiers CSS -->
     <link rel="stylesheet" href="assets/css/base.css" />
-<!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- Fichiers Javascript -->
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="assets/js/test.js"></script>
     <!-- Iconify -->
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
-    
+
     <!-- Js page profil -->
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
@@ -38,7 +38,7 @@
 </head>
 
 <header>
-<!------------------ NAVBAR --------------------->
+    <!------------------ NAVBAR --------------------->
     <div class="pos-f-t">
         <div class="collapse" id="navbarToggleExternalContent">
             <div class="bg-dark p-4">
@@ -59,15 +59,14 @@
 </header>
 
 <body>
-<div class="main-container container p-3 my-3 border">
+    <div class="main-container container p-3 my-3 border">
         <?= $content ?>
     </div>
-    
 
-
-<footer>
-    <div class="card-footer bg-dark text-white text-center">© tout droit reservé, Cedric Schuman, Parisot Bryan <p class="text-white" id="date_footer">XXXX</p></div>
-</footer>
+    <footer>
+        <div class="card-footer bg-dark text-white text-center">© tout droit reservé, Cedric Schuman, Parisot Bryan <p class="text-white" id="date_footer">XXXX</p>
+        </div>
+    </footer>
 
 </body>
 
