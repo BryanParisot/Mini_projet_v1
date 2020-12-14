@@ -81,9 +81,9 @@ class Post extends Model
     public function getDataArray()
     {
         return array(
-            "id_utilisateur" => $this->getId_utilisateur(),
-            "titre" => $this->getTitre(),
-            "message" => $this->getMessage(),
+            "id_utilisateur"      => $this->getId_utilisateur(),
+            "titre"               => $this->getTitre(),
+            "message"             => $this->getMessage(),
             "date_heure_creation" => $this->getDate_heure_creation()
         );
     }

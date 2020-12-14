@@ -57,7 +57,7 @@ class Category extends Model
     {
         return array(
             "id_users" => $this->getId_users(),
-            "langage" => $this->getLangage()
+            "langage"  => $this->getLangage()
         );
     }
 

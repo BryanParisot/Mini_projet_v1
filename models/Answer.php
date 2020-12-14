@@ -77,9 +77,9 @@ class Answer extends Model
     {
         return array(
             "id_utilisateur" => $this->getId_utilisateur(),
-            "id_categorie" => $this->getId_categorie(),
-            "id_post" => $this->getId_post(),
-            "message" => $this->getmessage()
+            "id_categorie"   => $this->getId_categorie(),
+            "id_post"        => $this->getId_post(),
+            "message"        => $this->getmessage()
         );
     }
 

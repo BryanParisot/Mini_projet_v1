@@ -14,6 +14,7 @@ class User extends Model
     private $role;
     private $etoile;
     private $avatar;
+    private $competence;
 
     public static $tableName = 'users';
 
@@ -109,6 +110,11 @@ class User extends Model
     {
         $this->avatar = $avatar;
     }
+    public function setCompetence($competence)
+    {
+        $this->competence = $competence;
+    }
+
 
 
     /* ----------------------------------------------
@@ -160,20 +166,26 @@ class User extends Model
         return $this->avatar;
     }
 
+    public function getCompetence()
+    {
+        return $this->competence;
+    }
+
     /**
      * Renvoie tous les champs privés sous forme de tableau sauf l'id
      */
     public function getDataArray()
     {
         return array(
-            "pseudo" => $this->getPseudo(),
-            "nom" => $this->getNom(),
-            "prenom" => $this->getPrenom(),
-            "email" => $this->getEmail(),
-            "mdp" => $this->getMdp(),
-            "role" => $this->getRole(),
-            "etoile" => $this->getEtoile(),
-            "avatar" => $this->getAvatar(),
+            "pseudo"    => $this->getPseudo(),
+            "nom"       => $this->getNom(),
+            "prenom"    => $this->getPrenom(),
+            "email"     => $this->getEmail(),
+            "mdp"       => $this->getMdp(),
+            "role"      => $this->getRole(),
+            "etoile"    => $this->getEtoile(),
+            "avatar"    => $this->getAvatar(),
+            "competence"=> $this->getCompetence()
         );
     }
     /**
