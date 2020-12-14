@@ -32,7 +32,7 @@ class RegisterController extends Controller
                 $prenom = $_POST["prenom"];
                 $nom    = $_POST["nom"];
                 $pseudo = $_POST["pseudo"];
-                $avatar = $_POST("avatar");
+                $avatar = $_POST["avatar"];
 
                 $user = new User(array(
                     "nom" => $nom,
