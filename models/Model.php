@@ -173,16 +173,26 @@ abstract class Model extends BDD
     protected static function _findOneBy($tableName, $data)
     {
         $resultPDO = self::_findBy($tableName, $data);
-        return $resultPDO->fetch(PDO::FETCH_ASSOC);
+
+        if($resultPDO) {
+            return $resultPDO->fetch(PDO::FETCH_ASSOC);
+        }
+        else {
+            return false;
+        }
     }
 
     protected static function _findAllBy($tableName, $data)
     {
         $resultPDO = self::_findBy($tableName, $data);
-        return $resultPDO->fetchAll(PDO::FETCH_ASSOC);
+        if($resultPDO) {
+            return $resultPDO->fetchAll(PDO::FETCH_ASSOC);
+        }
+        else {
+            return false;
+        }
     }
-
-    public function refreshModel($tableName, $data = array())
+        public function refreshModel($tableName, $data = array())
     {
         if (sizeof($data) > 0) {
             // Appelle “findBy” de “Model”

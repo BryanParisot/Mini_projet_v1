@@ -3,6 +3,9 @@
 require_once("controllers/Controller.php");
 require_once("Session.php");
 
+require_once("models/User.php");
+
+
 class ProfilController extends Controller
 {
     public function __construct(){}

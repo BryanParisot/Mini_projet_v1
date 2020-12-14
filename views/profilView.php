@@ -40,20 +40,20 @@
                                 <table class="table table-user-information">
                                     <tbody>
                                     <tr>
-                                        <td>Förnamn:</td>
-                                        <td>Jonathan</td>
+                                        <td>Prenom</td>
+                                        <td><?= $userData["prenom"] ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Efternamn:</td>
-                                        <td>Riihimäki</td>
+                                        <td>Nom:</td>
+                                        <td><?= $userData["nom"] ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Adress:</td>
-                                        <td>Vinkelgatan 4</td>
+                                        <td>pseudo:</td>
+                                        <td><?= $userData["pseudo"] ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Warnings</td>
-                                        <td>0</td>
+                                        <td>Email</td>
+                                        <td><?= $userData["email"] ?></td>
                                     </tr>
                                     </tbody>
                                 </table>
