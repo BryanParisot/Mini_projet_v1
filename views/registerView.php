@@ -24,6 +24,29 @@
                                         <label class="custom-file-label" for="inputGroupFile01"></label>
                                </div>
         </p>
+<!---------------- INPUT CHECKBOX POUR COMPETENCE --------->
+
+        <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="html">
+        <label class="form-check-label" for="inlineCheckbox1">HTML</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="css">
+        <label class="form-check-label" for="inlineCheckbox2">CSS</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="js" >
+        <label class="form-check-label" for="inlineCheckbox1">JS</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="php" >
+        <label class="form-check-label" for="inlineCheckbox2">PHP</label>
+        </div>
+
+
 <!---------------- BUTTON ENREGISTRER --------->
     <button type="submit" class="btn btn-primary">S'enregistré</button>
     </div>
