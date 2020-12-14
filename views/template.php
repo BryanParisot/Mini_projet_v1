@@ -59,11 +59,7 @@
 </header>
 
 <body>
-<<<<<<< HEAD
-    <div class="main-container container p-3 my-3 border">
-=======
-<div class=" container p-3 my-3 border">
->>>>>>> 94393ae585a72e86cc4dd7ba7ec26b94f78181c4
+<div class="container p-3 my-3 border">
         <?= $content ?>
     </div>
 
