@@ -32,6 +32,7 @@ class RegisterController extends Controller
                 $prenom = $_POST["prenom"];
                 $nom    = $_POST["nom"];
                 $pseudo = $_POST["pseudo"];
+                $avatar = $_POST("avatar");
 
                 $user = new User(array(
                     "nom" => $nom,
@@ -39,7 +40,9 @@ class RegisterController extends Controller
                     "pseudo" => $pseudo,
                     "email" => $email,
                     "mdp" => hash("sha256", $_POST["password"]),
-                    "points" => 0
+                    "role" => 0,
+                    "etoiles" => 0,
+                    "avatar" => $avatar
                 ));
 
                 if ($user->existInBDD()) {

@@ -20,7 +20,7 @@
         <p>Confirmation du mot de passe : <input id="input-confirm-mdp" class="form-control" type="password" name="confirm_password"></p>
 <!---------------- AVATAR --------------------->        
         <p>Ajouter un avatar : <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="inputGroupFile01">
+                                    <input type="file" class="custom-file-input" id="inputGroupFile01" name='avatar'>
                                         <label class="custom-file-label" for="inputGroupFile01"></label>
                                </div>
         </p>
