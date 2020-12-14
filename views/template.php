@@ -37,10 +37,10 @@
         <div class="collapse" id="navbarToggleExternalContent">
             <div class="bg-dark p-4">
                 <h4 class="text-white">Mini Projet</h4>
-                <a href="http://localhost/Mini_projet_v1/index.php?action=home">Home</a>
-                <a href="http://localhost/Mini_projet_v1/index.php?action=login">Connexion</a>
-                <a href="http://localhost/Mini_projet_v1/index.php?action=register">S'enregistrer</a>
-                <a href="http://localhost/Mini_projet_v1/index.php?action=logout">Déconnexion</a>
+                <a href="index.php?action=home">Home</a>
+                <a href="index.php?action=login">Connexion</a>
+                <a href="index.php?action=register">S'enregistrer</a>
+                <a href="index.php?action=logout">Déconnexion</a>
             </div>
         </div>
         <nav class="navbar navbar-dark bg-dark">

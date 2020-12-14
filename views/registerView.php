@@ -48,6 +48,6 @@
 
 
 <!---------------- BUTTON ENREGISTRER --------->
-    <button type="submit" class="btn btn-primary">S'enregistré</button>
-    </div>
+<button type="submit" class="btn btn-primary text-center">S'enregistré</button>
+</div>
 </form>
