@@ -45,6 +45,7 @@
         <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="php" >
         <label class="form-check-label" for="inlineCheckbox2">PHP</label>
         </div>
+        <br>
 
 
 <!---------------- BUTTON ENREGISTRER --------->

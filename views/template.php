@@ -28,6 +28,12 @@
     <script type="text/javascript" src="assets/js/test.js"></script>
     <!-- Iconify -->
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    
+    <!-- Js page profil -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/profil.js"></script>
 
 </head>
 

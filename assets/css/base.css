@@ -3,6 +3,12 @@ html, body {
     padding: 0;
 }
 
+/*-----  NAVBAR --------*/
+.navbar {
+    position: absolute;
+    justify-content: left !important;
+}
+
 h1 {
     text-align: center;
 }
@@ -14,7 +20,7 @@ div.main-container {
 
 
 
-/*  PAGE HOME */
+/*------ PAGE HOME -------*/
 p {
     color: black;
 }
@@ -107,4 +113,37 @@ h2 {
 
 .social a:hover {
     opacity: 1
+}
+
+
+/*--------- PAGE PROFIL ---------*/
+.user-row {
+    margin-bottom: 14px;
+}
+
+.user-row:last-child {
+    margin-bottom: 0;
+}
+
+.dropdown-user {
+    margin: 13px 0;
+    padding: 5px;
+    height: 100%;
+}
+
+.dropdown-user:hover {
+    cursor: pointer;
+}
+
+.table-user-information > tbody > tr {
+    border-top: 1px solid rgb(221, 221, 221);
+}
+
+.table-user-information > tbody > tr:first-child {
+    border-top: 0;
+}
+
+
+.table-user-information > tbody > tr > td {
+    border-top: 0;
 }
