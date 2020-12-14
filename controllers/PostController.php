@@ -7,8 +7,8 @@ class PostController extends Controller {
     public function __construct() {}
 
     public function index() {
-        $data = array("title" => "PostController");
-        $this->render("postController", $data);
+        $data = array("title" => "Post");
+        $this->render("post", $data);
     }
      
 }

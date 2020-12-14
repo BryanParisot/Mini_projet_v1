@@ -59,7 +59,7 @@
 </header>
 
 <body>
-<div class="main-container container p-3 my-3 border">
+<div class=" container p-3 my-3 border">
         <?= $content ?>
     </div>
     
