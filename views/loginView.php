@@ -1,3 +1,5 @@
+<h1>Page de connexion</h1>
+
 <form>
     <div class="form-group">
         <label for="exampleInputEmail1">Adresse mail</label>

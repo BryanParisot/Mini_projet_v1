@@ -14,21 +14,10 @@
     <meta name="language" content="fr-FR" />
     <meta name="robots" content="all" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    
-
-    <!-- Fichiers CSS -->
-    <!-- Bootstrap CSS -->
+<!-- Fichiers CSS -->
+    <link rel="stylesheet" href="assets/css/base.css" />
+<!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <!-- Nos fichiers CSS globaux -->
-    
-
-    <!-- Nos fichiers CSS dynamiques -->
-   
-
-
-    <!-- /Fichiers CSS -->
 
     <!-- Fichiers Javascript -->
     <!-- jQuery and JS bundle w/ Popper.js -->
@@ -40,22 +29,18 @@
     <!-- Iconify -->
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 
-    
-
-    <!-- Nos fichiers JS dynamiques -->
-    
-
-
-    <!-- /Fichiers Javascript -->
-
 </head>
 
 <header>
+<!------------------ NAVBAR --------------------->
     <div class="pos-f-t">
         <div class="collapse" id="navbarToggleExternalContent">
             <div class="bg-dark p-4">
-                <h4 class="text-white">Link</h4>
-                <span class="text-muted">Link</span>
+                <h4 class="text-white">Mini Projet</h4>
+                <a href="http://localhost/Mini_projet_v1/index.php?action=home">Home</a>
+                <a href="http://localhost/Mini_projet_v1/index.php?action=login">Connexion</a>
+                <a href="http://localhost/Mini_projet_v1/index.php?action=register">S'enregistrer</a>
+                <a href="http://localhost/Mini_projet_v1/index.php?action=logout">Déconnexion</a>
             </div>
         </div>
         <nav class="navbar navbar-dark bg-dark">
@@ -67,9 +52,10 @@
 </header>
 
 <body>
-    <main role="main" class="main-container container p-3 my-3 border">
+<div class="main-container container p-3 my-3 border">
         <?= $content ?>
-    </main>
+    </div>
+    
 
 
 <footer>
