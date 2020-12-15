@@ -42,7 +42,8 @@ class RegisterController extends Controller
                     "mdp" => hash("sha256", $_POST["password"]),
                     "role" => 0,
                     "etoiles" => 0,
-                    "avatar" => $avatar
+                    "avatar" => $avatar,
+                    "competence"  => 0
                 ));
 
                 if ($user->existInBDD()) {

@@ -67,7 +67,7 @@ abstract class Model extends BDD
         $textValeurs = implode("', '", $valeurs);
 
         $sql = "INSERT INTO `{$tableName}` (`{$textColonnes}`) VALUES ('{$textValeurs}')";
-        // echo "<p>$sql</p>";
+        echo "<p>$sql</p>";
 
         $this->executeRequest($sql);
         // "INSERT INTO nomDeLaTable (colonne1, colonne2, ...) VALUES ('valeur_colonne1', 'valeur_colonne2', ...)"

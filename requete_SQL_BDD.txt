@@ -7,7 +7,8 @@ CREATE TABLE `users` (
   `mdp` varchar(255) NOT NULL,
   `role` INT(1) NOT NULL,
   `etoile` INT(5) NOT NULL,
-  `avatar` varchar(50)
+  `avatar` varchar(50),
+  `competence` INT(5) NOT NULL 
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
