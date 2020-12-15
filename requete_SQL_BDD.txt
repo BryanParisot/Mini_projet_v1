@@ -27,7 +27,7 @@ CREATE TABLE `posts` (
 CREATE TABLE `categories` (
   `id` INT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `id_users` INT(20),
-  `categories` CHANGE `langage` `langage` INT(1) NOT NULL
+  `categories` CHANGE `langage` `langage` INT(3) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 

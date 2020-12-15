@@ -83,8 +83,8 @@ class Router
     }
     public function rooterRequestCategorie()
     {
-        if (isset($_GET['categorie'])) {
-            switch ($_GET['categorie']) {
+        if (isset($_GET['action=post&categorie'])) {
+            switch ($_GET['action=post&categorie']) {
                 case 'html':
                     $this->postController->index();
                     break;

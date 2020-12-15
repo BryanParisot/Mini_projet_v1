@@ -4,7 +4,7 @@ html, body {
 }
 
 
-/*-----  NAVBAR --------*/
+/*--------------------------------------------  NAVBAR -----------------------------------------------------*/
 .navbar {
     position: absolute;
     justify-content: left !important;
@@ -15,7 +15,7 @@ h1 {
 }
 
 
-/*------ PAGE HOME -------*/
+/*-------------------------------------------- PAGE HOME ---------------------------------------------------*/
 p {
     color: black;
 }
@@ -95,23 +95,8 @@ h2 {
     margin-bottom: 20px
 }
 
-.social {
-    font-size: 18px
-}
 
-.social a {
-    color: inherit;
-    margin: 0 10px;
-    display: inline-block;
-    opacity: 0.7
-}
-
-.social a:hover {
-    opacity: 1
-}
-
-
-/*--------- PAGE PROFIL ---------*/
+/*-------------------------------------------- PAGE PROFIL --------------------------------------------*/
 .user-row {
     margin-bottom: 14px;
 }
@@ -144,10 +129,8 @@ h2 {
 }
 
 
-/*--------- PAGE POST -------------*/
-
-
-.inner-wrapper {
+/*-------------------------------------------- PAGE POST ----------------------------------------------------*/
+    .inner-wrapper {
     position: relative;
     height: calc(100vh - 3.5rem);
     transition: transform 0.3s;
