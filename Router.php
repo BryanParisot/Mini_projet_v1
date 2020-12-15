@@ -81,4 +81,23 @@ class Router
             exit;
         }
     }
+    public function rooterRequestCategorie()
+    {
+        if (isset($_GET['categorie'])) {
+            switch ($_GET['categorie']) {
+                case 'html':
+                    $this->postController->index();
+                    break;
+                case 'css':
+                    $this->postController->index();
+                    break;
+                case 'php':
+                    $this->postController->index();
+                    break;
+                case 'js':
+                    $this->postController->index();
+                    break;
+            }
+        }
+    }
 }
