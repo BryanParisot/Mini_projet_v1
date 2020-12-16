@@ -6,7 +6,13 @@ class Category extends Model
     private $id_users;
     private $langage;
 
-    public $tableName = "categories";
+    public static $tableName = "categories";
+
+    public function __construct($data = array())
+    {
+        $this->hydrate($data);
+    }
+
 
 
     public function refresh()

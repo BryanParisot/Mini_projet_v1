@@ -8,7 +8,13 @@ class Post extends Model
     private $message;
     private $date_heure_creation;
 
-    public $tableName = 'posts';
+    public static $tableName = 'posts';
+
+    public function __construct($data = array())
+    {
+        $this->hydrate($data);
+    }
+
 
     /* ----------------------------------------------
         Utils : Méthodes utiles
@@ -116,7 +122,7 @@ class Post extends Model
             // On renvoie tous les utilisateurs trouvés
             return $data;
         } else {
-            echo "<p>/!\ je n'ai pas pu lorem lorem lorem lorem</p>";
+            echo "<p>/!\ je n'ai pas pu récupérer....</p>";
             return array();
         }
     }

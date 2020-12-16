@@ -8,7 +8,13 @@ class Answer extends Model
     private $id_post;
     private $message;
 
-    public $tableName = "reponses";
+    public static $tableName = "reponses";
+
+    public function __construct($data = array())
+    {
+        $this->hydrate($data);
+    }
+
 
 
 
