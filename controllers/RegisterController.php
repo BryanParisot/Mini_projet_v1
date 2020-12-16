@@ -50,7 +50,8 @@ class RegisterController extends Controller
                     $this->render("register", array("title" => "Page d'inscription", "error" => "Cet utilisateur existe déjà"));
                 } else {
                     // On ajoute l'utilisateur à la BDD
-                    $user->pushToBDD();    //--------------pensé a linker BDD ---------------//
+                    $user->pushToBDD();    
+                    //--------------pensé a linker BDD ---------------//
 
                     // On crée une session pour l'utilisateur
                     Session::create($user);

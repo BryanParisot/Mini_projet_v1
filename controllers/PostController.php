@@ -20,11 +20,6 @@ class PostController extends Controller
                 $session = Session::get();
 
                 $user = new User($session["userData"]);
-
-                // On vérifie si il N'est PAS un administrateur
-                // if ($user->getRole() !== 1) {
-                //     $tousLesPosts = Post::getAllPost();
-                // }
             }
 
 

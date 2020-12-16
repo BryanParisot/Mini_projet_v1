@@ -20,6 +20,7 @@ function isAdmin($userData)
 {
     return ($userData["role"] === Configuration::$IS_ADMIN);
 }
+//ROLE*****
 
 function isModerateur($userData)
 {
@@ -30,3 +31,26 @@ function isSessionActive($userData)
 {
     return (sizeof($userData) > 0);
 }
+
+//CATEGORIE*****
+
+function isHtml($userData)
+{
+    return ($userData["categorie"] === Configuration::$IS_HTML);
+}
+
+function isCss($userData)
+{
+    return ($userData["categorie"] === Configuration::$IS_CSS);
+}
+
+function isJs($userData)
+{
+    return ($userData["categorie"] === Configuration::$IS_JS);
+}
+
+function isPhp($userData)
+{
+    return ($userData["categorie"] === Configuration::$IS_PHP);
+}
+
