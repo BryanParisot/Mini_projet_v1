@@ -131,16 +131,19 @@ class Post extends Model
         // On récupére l'instance de la bdd
         $bdd = BDD::getInstance();
         // On exécute une requête SQL
-        $resultPDO = $bdd->executeRequest("SELECT posts.id_utilisateurs, posts.titre, users.prenom
-                                           FROM posts
-                                           INNER JOIN users 
-                                           ON posts.id_utilisateurs = users.id");
+        $resultPDO = $bdd->executeRequest("SELECT posts.id_utilisateurs,users.prenom,posts.titre,categories.nom_langage
+        FROM posts
+        INNER JOIN users 
+        ON posts.id_utilisateurs = users.id
+        INNER JOIN categories 
+        ON posts.id_categorie = categories.id
+        ORDER BY posts.id DESC ");
 
         // On récupére le tableau des résultats si possible
         if ($resultPDO) {
             $data = $resultPDO->fetchAll(PDO::FETCH_ASSOC);
             // On affiche le tableau des résultats
-            var_dump($data);
+            // var_dump($data);
 
             if ($data) {
                 // On renvoie tous les posts trouvés

@@ -5,6 +5,7 @@ class Category extends Model
     private $id;
     private $id_users;
     private $langage;
+    private $nom_langage
 
     public static $tableName = "categories";
 
@@ -41,6 +42,12 @@ class Category extends Model
         $this->langage = intval($langage);
     }
 
+    public function setnom_langage($nom_langage)
+    {
+        $this->nom_langage = ($nom_langage);
+    }
+
+
     /* ----------------------------------------------
                                 Getters
     -------------------------------------------------*/
@@ -59,11 +66,22 @@ class Category extends Model
     {
         return intval($this->langage);
     }
+
+    public function getNom_langage()
+    {
+        return ($this->nom_langage);
+    }
+
+
+
+
     public function getDataArray()
     {
         return array(
             "id_users" => $this->getId_users(),
             "langage"  => $this->getLangage()
+            "nom_langage"  => $this->getNom_langage()
+
         );
     }
 
