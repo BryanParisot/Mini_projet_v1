@@ -17,7 +17,6 @@ CREATE TABLE `users` (
 CREATE TABLE `posts` (
   `id` INT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `id_utilisateurs` INT(20),
-  `id_categorie` INT(50),
   `titre` varchar(20) NOT NULL,
   `message` text NOT NULL,
   `date/heure_creation` DATETIME(15) NOT NULL
