@@ -20,8 +20,7 @@ CREATE TABLE `posts` (
   `id_categorie` INT(20),
   `id_reponse` INT(20),
   `titre` varchar(20) NOT NULL,
-  `message` text NOT NULL,
-  `date/heure_creation` DATETIME(15) NOT NULL
+  `message` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
@@ -29,7 +28,7 @@ CREATE TABLE `posts` (
 CREATE TABLE `categories` (
   `id` INT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `id_users` INT(20),
-  `categories` CHANGE `langage` `langage` INT(3) NOT NULL
+  `nom_langage` VARCHAR(10) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
