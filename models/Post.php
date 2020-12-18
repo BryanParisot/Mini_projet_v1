@@ -125,19 +125,20 @@ class Post extends Model
         }
     }
 
-    public static function getAllPost()
+    public static function getAllPost($idLangage)
     {
         // Exemple de requête SQL
         // On récupére l'instance de la bdd
         $bdd = BDD::getInstance();
         // On exécute une requête SQL
         $resultPDO = $bdd->executeRequest("SELECT posts.id_utilisateurs,users.prenom,posts.titre,categories.nom_langage
-        FROM posts
-        INNER JOIN users 
-        ON posts.id_utilisateurs = users.id
-        INNER JOIN categories 
-        ON posts.id_categorie = categories.id
-        ORDER BY posts.id DESC ");
+                                           FROM posts
+                                           INNER JOIN users 
+                                           ON posts.id_utilisateurs = users.id
+                                           INNER JOIN categories 
+                                           ON posts.id_categorie = categories.id
+                                           WHERE categories.langage = {$idLangage}
+                                           ORDER BY posts.id DESC ");
 
         // On récupére le tableau des résultats si possible
         if ($resultPDO) {
@@ -158,7 +159,7 @@ class Post extends Model
     }
 
     /**
-     * Recuperer tous les posts par rapport à l'id utilisateur.
+     * Recupere tous les posts par rapport à l'id utilisateur.
      */
     public static function getAllPostByUserId($id_user)
     {
@@ -173,5 +174,41 @@ class Post extends Model
             return array();
         }
     }
+
+    public function getAuthor(){
+
+        
+
+                // Exemple de requête SQL
+        // On récupére l'instance de la bdd
+        $bdd = BDD::getInstance();
+        // On exécute une requête SQL
+        $resultPDO = $bdd->executeRequest("SELECT id_utilisateurs, users.pseudo , users.prenom , users.nom, users.email
+        FROM posts
+        INNER JOIN users 
+        ON posts.id_utilisateurs = users.id
+        GROUP BY id_utilisateurs 
+        HAVING id_utilisateurs = {$this->getId_utilisateurs()}");
+
+        // On récupére le tableau des résultats si possible
+        if ($resultPDO) {
+            $data = $resultPDO->fetchAll(PDO::FETCH_ASSOC);
+            // On affiche le tableau des résultats
+            // var_dump($data);
+
+            if ($data) {
+                // On renvoie tous les posts trouvés
+                return $data[0];
+            } else {
+                echo "<p>/!\ je n'ai pas pu récupérer les posts</p>";
+                return array();
+            }
+        }else{
+            return array();
+        }
+
+
+    }
+
 
 }

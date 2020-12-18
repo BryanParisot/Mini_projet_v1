@@ -2,6 +2,7 @@
 
 require_once("controllers/Controller.php");
 require_once("Session.php");
+
 require_once("models/User.php");
 require_once("models/Post.php");
 
@@ -13,7 +14,7 @@ class PostController extends Controller
 
     public function index() {
 
-        $tousLesPosts = Post::getAllPost();
+        $tousLesPosts = Post::getAllPost($_GET['categorie']);
     
             // Si la session n'est pas créée
             if (Session::isCreated()) {
