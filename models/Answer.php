@@ -6,7 +6,7 @@ class Answer extends Model
     private $id_utilisateur;
     private $id_categorie;
     private $id_post;
-    private $message;
+    private $reponse;
 
     public static $tableName = "reponses";
 
@@ -20,7 +20,7 @@ class Answer extends Model
 
     public function refresh()
     {
-        parent::refreshModel(array("id_utilisateur" => $this->id_utilisateur, "id_categorie" => $this->id_categorie, "id_post" => $this->id_post, "message" => $this->message));
+        parent::refreshModel(array("id_utilisateur" => $this->id_utilisateur, "id_categorie" => $this->id_categorie, "id_post" => $this->id_post, "reponse" => $this->reponse));
     }
 
     /* ----------------------------------------------
@@ -47,9 +47,9 @@ class Answer extends Model
         $this->id_post = intval($id_post);
     }
 
-    public function setMesagge($mesagge)
+    public function setReponse($reponse)
     {
-        $this->mesagge = intval($mesagge);
+        $this->reponse = ($reponse);
     }
 
     /* ----------------------------------------------
@@ -73,9 +73,9 @@ class Answer extends Model
     {
         return intval($this->id_post);
     }
-    public function getMessage()
+    public function getReponse()
     {
-        return intval($this->message);
+        return intval($this->reponse);
     }
 
 
@@ -85,8 +85,43 @@ class Answer extends Model
             "id_utilisateur" => $this->getId_utilisateur(),
             "id_categorie"   => $this->getId_categorie(),
             "id_post"        => $this->getId_post(),
-            "message"        => $this->getmessage()
+            "reponse"        => $this->getReponse()
         );
+    }
+
+
+    public static function getAllAnswerFromPostId($postId)
+    {
+        // Exemple de requête SQL
+        // On récupére l'instance de la bdd
+        $bdd = BDD::getInstance();
+        // On exécute une requête SQL
+        $resultPDO = $bdd->executeRequest("SELECT posts.id_utilisateurs,users.prenom,posts.titre,categories.nom_langage,posts.message,reponses.reponse
+                                            FROM posts
+                                            INNER JOIN users 
+                                            ON posts.id_utilisateurs = users.id
+                                            INNER JOIN categories 
+                                            ON posts.id_categorie = categories.id
+                                            INNER JOIN reponses 
+                                            ON posts.id_reponse = reponses.id
+                                            WHERE posts.id = {$postId}");
+
+        // On récupére le tableau des résultats si possible
+        if ($resultPDO) {
+            $data = $resultPDO->fetchAll(PDO::FETCH_ASSOC);
+            // On affiche le tableau des résultats
+            // var_dump($data);
+
+            if ($data) {
+                // On renvoie tous les posts trouvés
+                return $data;
+            } else {
+                echo "<p>/!\ je n'ai pas pu récupérer les posts</p>";
+                return array();
+            }
+        }else{
+            return array();
+        }
     }
 
 
@@ -108,17 +143,17 @@ class Answer extends Model
             return null;
         }
     }
-    public static function getAllAnswer()
-    {
-        // Appelle “findBy” de “Model”
-        $data = self::_findAllBy(self::$tableName, array());
+    // public static function getAllAnswer()
+    // {
+    //     // Appelle “findBy” de “Model”
+    //     $data = self::_findAllBy(self::$tableName, array());
 
-        if ($data) {
-            // On renvoie tous les utilisateurs trouvés
-            return $data;
-        } else {
-            echo "<p>/!\ Je n'ai pas pu récupérer la ******* </p>";
-            return array();
-        }
-    }
+    //     if ($data) {
+    //         // On renvoie tous les utilisateurs trouvés
+    //         return $data;
+    //     } else {
+    //         echo "<p>/!\ Je n'ai pas pu récupérer la ******* </p>";
+    //         return array();
+    //     }
+    // }
 }

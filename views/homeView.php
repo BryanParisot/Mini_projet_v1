@@ -8,7 +8,7 @@
         </div>
         <div class="row people d-flex justify-content-center">
             <div class="col-md-4 col-lg-6 item">
-                <a href="index.php?action=post&categorie=html">
+                <a href="index.php?action=post&categorie=1">
                     <div class="box">
                         <img src="assets/img/HTML5_logo.png" alt="HTML" width="300" height="280">
                         <div class="cover">
@@ -19,7 +19,7 @@
                 </a>
             </div>
             <div class="col-md-4 col-lg-6 item">
-                <a href="index.php?action=post&categorie=css">
+                <a href="index.php?action=post&categorie=2">
                     <div class="box">
                         <img src="assets/img/css-logo.png" alt="CSS" width="300" height="280">
                         <div class="cover">
@@ -30,7 +30,7 @@
                 </a>
             </div>
             <div class="col-md-4 col-lg-6 item">
-                <a href="index.php?action=post&categorie=js">
+                <a href="index.php?action=post&categorie=3">
                     <div class="box">
                         <img src="assets/img/js-logo.png" alt="JS" width="300" height="280">
                         <div class="cover">
@@ -41,7 +41,7 @@
                 </a>
             </div>
             <div class="col-md-4 col-lg-6 item">
-                <a href="index.php?action=post&categorie=php">
+                <a href="index.php?action=post&categorie=4">
                     <div class="box">
                         <img src="assets/img/php_logo.png" alt="PHP" width="300" height="300">
                         <div class="cover">

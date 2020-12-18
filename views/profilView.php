@@ -5,7 +5,7 @@
     <div class="well col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
         <div class="row user-row">
             <div class="col-xs-3 col-sm-2 col-md-1 col-lg-1">
-                <img class="img-circle" src="https://www.gravatar.com/avatar/ [ <?= $userData["avatar"] ?> ] ?s= [sizes="32x32"] &d=identicon&r=PG" alt="User Pic">
+                <img class="img-circle" src="https://www.gravatar.com/avatar/<?= hash("sha256", $userData["prenom"]) ?>?s=32&d=identicon&r=PG" class="mr-2 rounded" width="32" height="32">
             </div>
             <div class="col-xs-8 col-sm-9 col-md-10 col-lg-10">
                 <strong>
@@ -26,10 +26,10 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-3 col-lg-3 hidden-xs hidden-sm">
-                                <img class="img-circle" src="https://www.gravatar.com/avatar/ [ <?= $userData["avatar"] ?> ] ?s= [sizes="32x32"] &d=identicon&r=PG" alt="User Pic">
+                                <img class="img-circle" src="https://www.gravatar.com/avatar/<?= hash("sha256", $userData["prenom"]) ?>?s=32&d=identicon&r=PG" class="mr-2 rounded" width="32" height="32">
                             </div>
                             <div class="col-xs-2 col-sm-2 hidden-md hidden-lg">
-                                <img class="img-circle" src="https://www.gravatar.com/avatar/ [ <?= $userData["avatar"] ?> ] ?s= [sizes="32x32"] &d=identicon&r=PG" alt="User Pic">
+                                <img class="img-circle" src="https://www.gravatar.com/avatar/<?= hash("sha256", $userData["prenom"]) ?>?s=32&d=identicon&r=PG" class="mr-2 rounded" width="32" height="32">
                             </div>
                             <div class=" col-md-9 col-lg-9 hidden-xs hidden-sm">
                                 <strong>Informations personnelles</strong><br>
