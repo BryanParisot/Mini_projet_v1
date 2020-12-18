@@ -42,13 +42,13 @@
                     <div class="media-body">
                         <h4 class="media-heading"> <?= $answerInfo["prenom"] ?></h4>
                         <p><?= $answerInfo["reponse"] ?></p>
-                        <ul class="list-unstyled list-inline media-detail pull-left">
+                        <!-- <ul class="list-unstyled list-inline media-detail pull-left">
                             <li><i class="fa fa-calendar"></i>27/02/2014</li>
                             <li><i class="fa fa-thumbs-up"></i>13</li>
                         </ul>
                         <ul class="list-unstyled list-inline media-detail pull-right">
                             <li class=""><a href="">Like</a></li>
-                        </ul>
+                        </ul> -->
                     </div>
                 </div>
                 <!-- COMMENT 2 - END -->
