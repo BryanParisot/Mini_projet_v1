@@ -20,7 +20,7 @@ class AnswerController extends Controller {
         $allAnswer = Answer::getAllAnswerFromPostId($postId);
 
         $data = array("title" => "Answer", 'allAnswer' => $allAnswer, 'postData' => $post->getDataArray(), 'auteurData' => $post->getAuthor());
-        var_dump($post->getAuthor());
+        // var_dump($post->getAuthor());
         $this->render("answer", $data);
 
     }

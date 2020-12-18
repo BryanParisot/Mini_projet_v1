@@ -7,8 +7,9 @@ class WritePostController extends Controller {
     public function __construct() {}
 
     public function index() {
-        $data = array("title" => "WritePostController");
-        $this->render("writePostController", $data);
+
+        $data = array("title" => "WritePost");
+        $this->render("writePost", $data);
     }
      
 }
