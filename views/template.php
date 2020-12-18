@@ -44,6 +44,7 @@
             <div class="bg-dark p-4">
                 <h4 class="text-white">Mini Projet</h4>
                 <a href="index.php?action=home">Home</a>
+                <a href="index.php?action=writePost">Crée un Post</a>
                 <a href="index.php?action=profil">Profil</a>
                 <a href="index.php?action=login">Connexion</a>
                 <a href="index.php?action=register">S'enregistrer</a>
