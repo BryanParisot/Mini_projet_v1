@@ -9,12 +9,11 @@
     <div class="media text-muted pt-3">
       <img src="https://www.gravatar.com/avatar/<?= hash("sha256", $postInfo["prenom"]) ?>?s=32&d=identicon&r=PG" class="mr-2 rounded" width="32" height="32">
       <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-      <a href="index.php?action=answer&postId= <?= $postId ?>">
+      <a href="index.php?action=answer&postId= <?=$postInfo["id_reponse"] ?>">
         <strong class="d-block text-gray-dark"><?= $postInfo["titre"] ?> </strong>
         <?= $postInfo["prenom"] ?> <br>  <?= $postInfo["nom_langage"] ?>
       </p></a>
     </div>
-
  <?php endforeach ?>
 
     <small class="d-block text-right mt-3">

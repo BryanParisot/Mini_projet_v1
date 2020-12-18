@@ -131,7 +131,7 @@ class Post extends Model
         // On récupére l'instance de la bdd
         $bdd = BDD::getInstance();
         // On exécute une requête SQL
-        $resultPDO = $bdd->executeRequest("SELECT posts.id_utilisateurs,users.prenom,posts.titre,categories.nom_langage
+        $resultPDO = $bdd->executeRequest("SELECT posts.id_utilisateurs,users.prenom,posts.titre,categories.nom_langage,id_reponse
                                            FROM posts
                                            INNER JOIN users 
                                            ON posts.id_utilisateurs = users.id
