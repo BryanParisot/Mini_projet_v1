@@ -41,6 +41,7 @@ class Session {
      * On récupère si une session a déjà été créée
      */
     static public function isCreated() {
+        
         self::_checkStatus();
         if(isset($_SESSION) && isset($_SESSION["userId"]) && isset($_SESSION["userData"])) {
             //echo "Session créée";

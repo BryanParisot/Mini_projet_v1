@@ -11,8 +11,7 @@ class Post extends Model
 
     public static $tableName = 'posts';
 
-    public function __construct($data = array())
-    {
+    public function __construct($data = array()) {
         $this->hydrate($data);
     }
 
@@ -21,8 +20,8 @@ class Post extends Model
         Utils : Méthodes utiles
     -------------------------------------------------*/
 
-    public function refresh()
-    {
+    public function refresh() {
+
         parent::refreshModel(array("id_utilisateurs" => $this->id_utilisateurs, "titre" => $this->titre, "message" => $this->message, "date_heure_creation" => $this->date_heure_creation));
     }
 
@@ -31,33 +30,33 @@ class Post extends Model
                             Setters
     -------------------------------------------------*/
 
-    public function setId($id)
-    {
+    public function setId($id) {
+
         $this->id = intval($id);
     }
 
-    public function setId_categorie($id_categorie)
-    {
+    public function setId_categorie($id_categorie) {
+
         $this->id_categorie = intval($id_categorie);
     }
 
-    public function setId_utilisateurs($id_utilisateurs)
-    {
+    public function setId_utilisateurs($id_utilisateurs) {
+
         $this->id_utilisateurs = intval($id_utilisateurs);
     }
 
-    public function setTitre($titre)
-    {
+    public function setTitre($titre) {
+
         $this->titre = $titre;
     }
 
-    public function setMessage($message)
-    {
+    public function setMessage($message) {
+
         $this->message = $message;
     }
 
-    public function setDate_heure_creation($date_heure_creation)
-    {
+    public function setDate_heure_creation($date_heure_creation) {
+
         $this->date_heure_creation = $date_heure_creation;
     }
 
@@ -65,40 +64,40 @@ class Post extends Model
                                 Getters
     -------------------------------------------------*/
 
-    public function getId()
-    {
+    public function getId() {
+
         return intval($this->id);
     }
 
-    public function getId_categorie()
-    {
+    public function getId_categorie() {
+
         return intval($this->id_categorie);
     }
 
-    public function getId_utilisateurs()
-    {
+    public function getId_utilisateurs() {
+
         return intval($this->id_utilisateurs);
     }
 
-    public function getTitre()
-    {
+    public function getTitre() {
+
         return $this->titre;
     }
 
-    public function getMessage()
-    {
+    public function getMessage() {
+
         return $this->message;
     }
 
-    public function getDate_heure_creation()
-    {
+    public function getDate_heure_creation() {
+
         return $this->date_heure_creation;
     }
 
-    public function getDataArray()
-    {
+    public function getDataArray() {
+
         return array(
-            "id_utilisateurs"      => $this->getId_utilisateurs(),
+            "id_utilisateurs"     => $this->getId_utilisateurs(),
             "id_categorie"        => $this->getId_categorie(),
             "titre"               => $this->getTitre(),
             "message"             => $this->getMessage(),
@@ -110,8 +109,7 @@ class Post extends Model
      * Met à jour les setters associés aux clés de data
      * @param Integer $id - Id de l'utilisateur dans la base de données
      */
-    public static function getPostById($id)
-    {
+    public static function getPostById($id) {
         // Appelle “findBy” de “Model”
         $data = self::_findOneBy(self::$tableName, array("id" => $id));
 
@@ -119,14 +117,15 @@ class Post extends Model
             // On crée un utilisateur à partir des données
             $post = new Post($data);
             return $post;
-        } else {
+        } 
+        
+        else {
             echo "<p>/!\ Je n'ai pas pu récupérer l'utilisateur avec l'id : {$id}</p>";
             return null;
         }
     }
 
-    public static function getAllPost($idLangage)
-    {
+    public static function getAllPost($idLangage) {
         // Exemple de requête SQL
         // On récupére l'instance de la bdd
         $bdd = BDD::getInstance();
@@ -149,27 +148,32 @@ class Post extends Model
             if ($data) {
                 // On renvoie tous les posts trouvés
                 return $data;
-            } else {
+            } 
+            
+            else {
                 echo "<p>/!\ je n'ai pas pu récupérer les posts</p>";
                 return array();
             }
-        }else{
-            return array();
+        }
+        
+            else{
+                return array();
         }
     }
 
     /**
      * Recupere tous les posts par rapport à l'id utilisateur.
      */
-    public static function getAllPostByUserId($id_user)
-    {
+    public static function getAllPostByUserId($id_user) {
         // Appelle “findBy” de “Model”
         $data = self::_findAllBy(self::$tableName, array('id_utilisateurs' => $id_user));
 
         if ($data) {
             // On renvoie tous les utilisateurs trouvés
             return $data;
-        } else {
+        } 
+        
+        else {
             echo "<p>/!\ je n'ai pas pu récupérer....</p>";
             return array();
         }
@@ -177,18 +181,16 @@ class Post extends Model
 
     public function getAuthor(){
 
-        
-
-                // Exemple de requête SQL
+        // Exemple de requête SQL
         // On récupére l'instance de la bdd
         $bdd = BDD::getInstance();
         // On exécute une requête SQL
         $resultPDO = $bdd->executeRequest("SELECT id_utilisateurs, users.pseudo , users.prenom , users.nom, users.email
-        FROM posts
-        INNER JOIN users 
-        ON posts.id_utilisateurs = users.id
-        GROUP BY id_utilisateurs 
-        HAVING id_utilisateurs = {$this->getId_utilisateurs()}");
+                                           FROM posts
+                                           INNER JOIN users 
+                                           ON posts.id_utilisateurs = users.id
+                                           GROUP BY id_utilisateurs 
+                                           HAVING id_utilisateurs = {$this->getId_utilisateurs()}");
 
         // On récupére le tableau des résultats si possible
         if ($resultPDO) {
@@ -203,12 +205,9 @@ class Post extends Model
                 echo "<p>/!\ je n'ai pas pu récupérer les posts</p>";
                 return array();
             }
-        }else{
-            return array();
         }
-
-
+              else{
+                return array();
+        }
     }
-
-
 }

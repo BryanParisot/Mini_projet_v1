@@ -13,8 +13,7 @@ require("controllers/WritePostController.php");
 
 
 
-class Router
-{
+class Router {
 
     private $answerController;
     private $contactController;
@@ -27,8 +26,8 @@ class Router
     private $registerController;
     private $writePostController;
 
-    function __construct()
-    {
+    function __construct() {
+
         $this->answerController            = new AnswerController();
         $this->contactController           = new ContactController();
         $this->errorController             = new ErrorController();
@@ -41,8 +40,8 @@ class Router
         $this->writePostController         = new WritePostController();
     }
     // on génére les vues, grace au controller, ici on vérifie si action est bien dans l'url. si il n'y est pas on renvoie sur la page home
-    public function routerRequest()
-    {
+    public function routerRequest() {
+
         if (isset($_GET['action'])) {
             switch ($_GET['action']) {
                 case 'answer':
@@ -76,7 +75,9 @@ class Router
                     $this->errorController->index();
                     break;
             }
-        } else {
+        } 
+        
+        else {
             header("Location: index.php?action=home");
             exit;
         }

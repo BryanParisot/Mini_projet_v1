@@ -1,19 +1,16 @@
 <?php
 
-abstract class Controller
-{
+abstract class Controller {
 
     abstract public function index();
 
-    protected function generateView($viewName, $data)
-    {
+    protected function generateView($viewName, $data) {
         // Générer la vue
         $view = new View($viewName);
         $view->generate($data);
     }
 
-    protected function render($viewName, $data)
-    {
+    protected function render($viewName, $data) {
 
         // On vérifie si la session de l'utilisateur est créée
         if (Session::isCreated()) {
@@ -23,12 +20,12 @@ abstract class Controller
             // On aura donc une variable $userData dans toutes les vues
             $data["userData"] = $session["userData"];
         }
+        
         else {
             // Je mets un tableau par défault pour éviter une erreur
             // On aura donc une variable $userData dans toutes les vues mais il faudra faire attention car elle est vide ici
             $data["userData"] = array();
         }
-
         // Générer la vue
         $view = new View($viewName);
         $view->generate($data);

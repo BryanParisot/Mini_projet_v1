@@ -2,16 +2,14 @@
 
 require_once("controllers/Controller.php");
 require_once("Session.php");
-
 require_once("models/User.php");
 
 
-class ProfilController extends Controller
-{
+class ProfilController extends Controller {
+
     public function __construct(){}
 
-    public function index()
-    {
+    public function index() {
 
         // Si la session n'est pas créée
         if (!Session::isCreated()) {
@@ -30,6 +28,7 @@ class ProfilController extends Controller
 
         // On vérifie si il est un administrateur
         if($user->getRole() == 1) {
+            
             $tousLesUtilisateurs = $user->getAllUsers();
         }
 

@@ -2,24 +2,23 @@
 
 require_once("Configuration.php");
 
-class BDD
-{
+class BDD {
     // Contiendra l'instance de notre classe.
     protected static $instance;
 
     // Instance de la PDO
     protected static $bdd;
 
-    protected function __construct()
-    {
+    protected function __construct() {
+        
         self::$host     = Configuration::$host;
         self::$nameBDD  = Configuration::$nameBDD;
         self::$username = Configuration::$username;
         self::$password = Configuration::$password;
         self::connect();
     }
-    protected function __clone()
-    {
+    
+    protected function __clone() {
     }
 
     private static $host;
@@ -30,8 +29,7 @@ class BDD
     /**
      * Connecte à la BDD et renvoie l'instance une fois créée
      */
-    protected static function connect()
-    {
+    protected static function connect() {
         $host       = self::$host;
         $nameBDD    = self::$nameBDD;
         $username   = self::$username;
@@ -39,7 +37,8 @@ class BDD
 
         try {
             self::$bdd = new PDO("mysql:host={$host};dbname={$nameBDD};charset=utf8", $username, $password);
-        } catch (PDOException $e) {
+        }
+        catch (PDOException $e) {
             echo 'Connexion échouée : ' . $e->getMessage();
         }
 
@@ -49,8 +48,8 @@ class BDD
     /**
      * Renvoie l'instance une fois créée et la créer si elle ne l'était pas déjà
      */
-    public static function getInstance()
-    {
+    public static function getInstance() {
+
         if (!isset(self::$instance)) {
             self::$instance = new self;
         }
@@ -61,8 +60,7 @@ class BDD
      * @param String $sql - Requête SQL
      * @param Array $data - Tableau de paramètres, peu être nul
      */
-    public static function executeRequest($sql, $data = null)
-    {
+    public static function executeRequest($sql, $data = null) {
         // On récupére la BDD ou l'on s'y connecte si $this->bdd était nul
         $instance = self::getInstance();
         $bdd = $instance::$bdd;
@@ -71,7 +69,9 @@ class BDD
         if (!isset($data) || (sizeof($data) === 0)) {
             // On exécute la requête SQL sans avoir besoin de $data
             $result = $bdd->query($sql);
-        } else {
+        } 
+        
+        else {
             // On exécute la requête SQL en utilisant $data
 
             // $sql = "SELECT ? FROM ?";

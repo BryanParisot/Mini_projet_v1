@@ -6,51 +6,51 @@ require_once("Configuration.php");
  * Fonctions simples et facilitant certains usages dans les vues
  */
 
-function getLink($urlRequest)
-{
+function getLink($urlRequest) {
+
     return "http://" . $_SERVER['SERVER_NAME'] . "/" . $urlRequest;
 }
 
-function getAssetLink($asset)
-{
+function getAssetLink($asset) {
+
     return getLink("assets/" . $asset);
 }
 
-function isAdmin($userData)
-{
+function isAdmin($userData) {
+
     return ($userData["role"] === Configuration::$IS_ADMIN);
 }
 //ROLE*****
 
-function isModerateur($userData)
-{
+function isModerateur($userData) {
+
     return ($userData["role"] === Configuration::$IS_MODERATEUR);
 }
 
-function isSessionActive($userData)
-{
+function isSessionActive($userData) {
+
     return (sizeof($userData) > 0);
 }
 
 //CATEGORIE*****
 
-function isHtml($userData)
-{
+function isHtml($userData) {
+
     return ($userData["categorie"] === Configuration::$IS_HTML);
 }
 
-function isCss($userData)
-{
+function isCss($userData) {
+
     return ($userData["categorie"] === Configuration::$IS_CSS);
 }
 
-function isJs($userData)
-{
+function isJs($userData) {
+
     return ($userData["categorie"] === Configuration::$IS_JS);
 }
 
-function isPhp($userData)
-{
+function isPhp($userData) {
+    
     return ($userData["categorie"] === Configuration::$IS_PHP);
 }
 

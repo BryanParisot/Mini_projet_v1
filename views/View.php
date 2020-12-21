@@ -2,13 +2,12 @@
 
 require_once("helpers.php");
 
-class View
-{
+class View {
 
     private $fileName;
 
-    public function __construct($fileName)
-    {
+    public function __construct($fileName) {
+
         $this->fileName = $fileName;
     }
 
@@ -16,8 +15,7 @@ class View
      * Générer une vue à partir d'un template et d'un nom de vue
      * @param array $data - Tableau contenant les variables à créer et leur valeur
      */
-    public function generate($data)
-    {
+    public function generate($data) {
         // On génère les variables utilisées dans la vue
         extract($data);
 

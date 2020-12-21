@@ -1,8 +1,8 @@
 <?php
 
 require_once("BDD.php");
-abstract class Model extends BDD
-{
+
+abstract class Model extends BDD {
 
     public static $tableName;
 
@@ -11,8 +11,7 @@ abstract class Model extends BDD
      * Celles-ci permettent d'appeler les setters associés.
      * @param Array $data - Ensemble des setters à mettre à jour
      */
-    public function hydrate($data)
-    {
+    public function hydrate($data) {
         if (sizeof($data) === 0) {
             return;
         }
@@ -45,8 +44,7 @@ abstract class Model extends BDD
      * @param String $tableName - Nom de la table à manipuler
      * @param Array $data - Tableau contenant les données à insérer dans la table
      */
-    protected function create($tableName, $data)
-    {
+    protected function create($tableName, $data) {
 
         $colonnes = [];
         $valeurs = [];
@@ -77,8 +75,7 @@ abstract class Model extends BDD
      * @param String $tableName - Nom de la table à manipuler
      * @param Array $data - Tableau contenant les données à utiliser comme condition
      */
-    protected static function findBy($tableName, $data)
-    {
+    protected static function findBy($tableName, $data) {
         // On crée notre requête SQL
         $sql = "SELECT * FROM `{$tableName}`";
 
@@ -97,8 +94,7 @@ abstract class Model extends BDD
      * @param Array $data - Tableau contenant les données à utiliser comme condition
      * @param Array $dataConditions - Condition à préciser pour le update
      */
-    protected function update($tableName, $data, $dataConditions)
-    {
+    protected function update($tableName, $data, $dataConditions) {
         // Liste des colonnes à modifier
         $colonnesToEdit = [];
 
@@ -126,8 +122,7 @@ abstract class Model extends BDD
      * @param String $tableName - Nom de la table à manipuler
      * @param Array $data - Tableau contenant les données à utiliser comme condition
      */
-    protected function delete($tableName, $data)
-    {
+    protected function delete($tableName, $data) {
         // On crée notre requête SQL
         $sql = "DELETE FROM `{$tableName}`";
         $sql .= $this->_createConditionString($data);
@@ -141,8 +136,7 @@ abstract class Model extends BDD
      * Créer la partie conditionnelle du sql
      * @param Array $data - Tableau contenant les données à utiliser comme condition
      */
-    private static function _createConditionString($data)
-    {
+    private static function _createConditionString($data) {
         // Liste des conditions
         $conditions = [];
 
@@ -163,14 +157,14 @@ abstract class Model extends BDD
      * @param Array $data - Conditions to give in the SQL Request
      * @param int $nb - Conditions to give in the SQL Request
      */
-    private static function _findBy($tableName, $data)
-    {
+    private static function _findBy($tableName, $data) {
+
         $resultPDO = self::findBy($tableName, $data);
         return $resultPDO;
     }
 
-    protected static function _findOneBy($tableName, $data)
-    {
+    protected static function _findOneBy($tableName, $data) {
+        
         $resultPDO = self::_findBy($tableName, $data);
 
         if($resultPDO) {
@@ -181,8 +175,8 @@ abstract class Model extends BDD
         }
     }
 
-    protected static function _findAllBy($tableName, $data)
-    {
+    protected static function _findAllBy($tableName, $data) {
+
         $resultPDO = self::_findBy($tableName, $data);
         if($resultPDO) {
             return $resultPDO->fetchAll(PDO::FETCH_ASSOC);
@@ -191,8 +185,8 @@ abstract class Model extends BDD
             return false;
         }
     }
-        public function refreshModel($tableName, $data = array())
-    {
+        public function refreshModel($tableName, $data = array()) {
+
         if (sizeof($data) > 0) {
             // Appelle “findBy” de “Model”
             $dataToHydrate = self::_findOneBy($tableName, $data);
@@ -208,8 +202,8 @@ abstract class Model extends BDD
     /**
      * On ajoute les données de l'instance dans la table associé de la BDD
      */
-    public function pushToBDD()
-    {
+    public function pushToBDD() {
+
         $data = $this->getDataArray();
         $this->create($this::$tableName, $data);
 
@@ -220,8 +214,8 @@ abstract class Model extends BDD
     /**
      * On met à jour les données de l'instance dans la table associé de la BDD
      */
-    public function updateInBDD()
-    {
+    public function updateInBDD() {
+
         $data = $this->getDataArray();
         $dataCondition = array(
             "id" => $this->getId(),
@@ -232,8 +226,8 @@ abstract class Model extends BDD
     /**
      * on supprime les données de l'instance dans la table associé de la BDD
      */
-    public function deleteFromBDD()
-    {
+    public function deleteFromBDD() {
+
         $dataCondition = array(
             "id" => $this->getId(),
         );

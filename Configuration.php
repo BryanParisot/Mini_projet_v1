@@ -1,7 +1,6 @@
 <?php
 
-class Configuration
-{
+class Configuration {
 
     // BDD
     public static $host = "localhost";

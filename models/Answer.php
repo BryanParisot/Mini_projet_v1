@@ -1,7 +1,7 @@
 <?php
 
-class Answer extends Model
-{
+class Answer extends Model {
+    
     private $id;
     private $id_utilisateur;
     private $id_categorie;
@@ -10,16 +10,16 @@ class Answer extends Model
 
     public static $tableName = "reponses";
 
-    public function __construct($data = array())
-    {
+    public function __construct($data = array()) {
+
         $this->hydrate($data);
     }
 
 
 
 
-    public function refresh()
-    {
+    public function refresh() {
+
         parent::refreshModel(array("id_utilisateur" => $this->id_utilisateur, "id_categorie" => $this->id_categorie, "id_post" => $this->id_post, "reponse" => $this->reponse));
     }
 
@@ -27,28 +27,28 @@ class Answer extends Model
                             Setters
     -------------------------------------------------*/
 
-    public function setId($id)
-    {
+    public function setId($id) {
+
         $this->id = intval($id);
     }
 
-    public function setId_utilisateur($id_utilisateur)
-    {
+    public function setId_utilisateur($id_utilisateur) {
+
         $this->id_utilisateur = intval($id_utilisateur);
     }
 
-    public function setId_categorie($id_categoriers)
-    {
+    public function setId_categorie($id_categoriers) {
+
         $this->id_categoriers = intval($id_categoriers);
     }
 
-    public function setId_post($id_post)
-    {
+    public function setId_post($id_post) {
+
         $this->id_post = intval($id_post);
     }
 
-    public function setReponse($reponse)
-    {
+    public function setReponse($reponse) {
+
         $this->reponse = ($reponse);
     }
 
@@ -56,31 +56,31 @@ class Answer extends Model
                                 Getters
     -------------------------------------------------*/
 
-    public function getId()
-    {
+    public function getId() {
+
         return intval($this->id);
     }
 
-    public function getId_utilisateur()
-    {
+    public function getId_utilisateur() {
+
         return intval($this->id_utilisateur);
     }
-    public function getId_categorie()
-    {
+    public function getId_categorie() {
+
         return intval($this->id_categorie);
     }
-    public function getId_post()
-    {
+    public function getId_post() {
+
         return intval($this->id_post);
     }
-    public function getReponse()
-    {
+    public function getReponse() {
+
         return intval($this->reponse);
     }
 
 
-    public function getDataArray()
-    {
+    public function getDataArray() {
+
         return array(
             "id_utilisateur" => $this->getId_utilisateur(),
             "id_categorie"   => $this->getId_categorie(),
@@ -90,8 +90,7 @@ class Answer extends Model
     }
 
 
-    public static function getAllAnswerFromPostId($postId)
-    {
+    public static function getAllAnswerFromPostId($postId) {
         // Exemple de requête SQL
         // On récupére l'instance de la bdd
         $bdd = BDD::getInstance();
@@ -115,11 +114,15 @@ class Answer extends Model
             if ($data) {
                 // On renvoie tous les posts trouvés
                 return $data;
-            } else {
+            } 
+            
+            else {
                 echo "<p>/!\ je n'ai pas pu récupérer les posts</p>";
                 return array();
             }
-        }else{
+        }
+        
+        else{
             return array();
         }
     }
@@ -129,8 +132,7 @@ class Answer extends Model
      * Met à jour les setters associés aux clés de data
      * @param Integer $id - Id de l'utilisateur dans la base de données
      */
-    public static function getAnswerById($id)
-    {
+    public static function getAnswerById($id) {
         // Appelle “findBy” de “Model”
         $data = self::_findOneBy(self::$tableName, array("id" => $id));
 
@@ -138,7 +140,9 @@ class Answer extends Model
             // On crée un utilisateur à partir des données
             $commande = new Answer($data);
             return $commande;
-        } else {
+        } 
+        
+        else {
             echo "<p>/!\ Je n'ai pas pu récupérer ******* avec l'id : {$id}</p>";
             return null;
         }

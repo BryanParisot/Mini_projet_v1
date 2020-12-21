@@ -7,8 +7,7 @@ require_once("models/User.php");
 require_once("models/Post.php");
 
 
-class PostController extends Controller 
-{
+class PostController extends Controller {
 
     public function __construct() {}
 

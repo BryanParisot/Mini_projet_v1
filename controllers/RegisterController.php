@@ -4,11 +4,9 @@ require_once("controllers/Controller.php");
 require_once("models/User.php");
 require_once("Session.php");
 
-class RegisterController extends Controller
-{
+class RegisterController extends Controller {
 
-    public function index()
-    {
+    public function index() {
         // On vérifie que si $_POST est vide
         // Si c'est le cas alors le formulaire n'a pas été validé
         if (sizeof($_POST) === 0) {
@@ -47,8 +45,11 @@ class RegisterController extends Controller
                 ));
 
                 if ($user->existInBDD()) {
+
                     $this->render("register", array("title" => "Page d'inscription", "error" => "Cet utilisateur existe déjà"));
-                } else {
+                } 
+                
+                else {
                     // On ajoute l'utilisateur à la BDD
                     $user->pushToBDD();    
                     //--------------pensé a linker BDD ---------------//
